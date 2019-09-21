@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
+        <style>
+            @keyframes example {
+                from {background-color: #ff5353;}
+                to {background-color: #e2a9a9;}
+            }
+            body{
+                font-family: arial;
+                margin: 0;
+                height:100%;
+            }
+
+            .bg{
+                  /* The image used */
+                  
+                background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf_HgElnB2J6FAwJ2I3vPYNIQUSNAMBXbd4__dGoDSrt15_FTT");
+
+                /* Full height */
+                height: 100%;
+                width:100%;
+
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            main, header{
+                display:flex;
+                flex-direction: column;
+                max-height:960px;
+                max-width: 960px;
+                margin: 30px auto;
+                padding: 0 10px;
+            
+                justify-content: center;
+                align-items: center;
+            }
+            main{
+                height:500px;
+            }
+            .google-btn{
+
+                color: #fff;
+                text-decoration: none;
+                font-size: 20px;
+                font-weight: 600;
+                padding: 15px;
+                margin-top:40px;
+                border:1px;
+                border-radius: 5px;
+                background: #f86e4b;
+            }
+            .center{
+                text-align:center;
+            }
+            footer{
+                padding-top: 20px;
+                color:#fff;
+                text-align: center; 
+                font-weight: 900;
+                font-size: 1.25rem;
+                
+            }
+            
+            .big{
+                padding:14px;
+                font-size:40px;
+            }
+            .intro{
+                display:flex;
+                
+            }
+            .animate  { 
+                
+                color:#fff;
+                transform: skewX(-50deg);
+                transition: transform 900ms ease;
+                animation-name: example;
+                animation-duration: 2s;
+            }
+            .animate:hover{
+                font-size: 2rem;
+            }
+            .red{
+                color:#f86e4b;
+            }
+            .card{
+                background-color: #131212d2;
+                height: 800px;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                position: relative;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            .strip{
+                position: absolute;
+                width: 250px;
+                height: 250px;
+                transition: 50ms ease;
+                background-image: linear-gradient(-45deg, #ffffff00 0%, #ffffff00 50%, #ffffff1f 50%, #ffffff08 100%);
+            }
+
+            .stripcircle{
+                position: absolute;
+                width: 500px;
+                height: 500px;
+                border-radius: 50%;
+                top: -250px;
+                background-image: radial-gradient(300px, #ffffff22, #ffffff00);
+            }
+
+            .strip1{
+                top: 5px;
+                left: 0;
+                border-top-left-radius: 10px;
+            }
+
+            .strip2{
+                left:0;
+                bottom:0;
+            }
+
+            .strip3{
+                right:0;
+                bottom:0;
+                background-image: linear-gradient(45deg, #ffffff11 , #ffffff02);
+                transform: skewY(-200deg);
+            }
+
+            .strip4{
+                top: 0px;
+                right: 0;
+                background-image: linear-gradient(45deg, #ffffff11 , #ffffff02);
+                transform: skewY(-200deg);
+            }
+
+            .strip5{
+                position: absolute;
+                width:800px;
+                height:800px;
+                left:21%;
+                bottom: 0;
+                transform: rotate(-45deg);
+                background-image: linear-gradient(45deg, #ffffff33 0%, #ffffff00 50%, #ffffff00 50%, #ffffff00 100%);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <header>
+            <h1>Login using...</h1>
+        </header> -->
+        <div class= card>
+            <div class="stripcircle"></div>
+            <div class="strip strip1"></div>
+            <div class="strip strip2"></div>
+            <div class="strip strip3"></div>
+            <div class="strip strip4"></div>
+            <div class="strip5"></div>
+            <main> 
+                <div class="intro center">
+                    <i class="fa fa-gamepad big red"></i>
+                    <h1 class="animated">
+                        RELAX-N-PLAY
+                    </h1>
+                </div>
+                <a class="google-btn center" href="/auth/google">Log-in With Google</a>
+            </main>
+        
+        <footer>
+                developed with <i class="fa fa-heart red"></i> by Jyoti
+        </footer>
+        </div>
+    </body>
+</html>
