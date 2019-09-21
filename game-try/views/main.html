@@ -4,33 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
-  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
+  <style>
+    footer{
+      z-index: 20px;
+      width:90%;
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items:center;
+      padding:5%;
+    }
+    #svg-container{
+      width:100%;
+      z-index:20px;
+      background-image:linear-gradient(to right,#f35539,#f39c39,#f7b264);
+      display: flex;
+    }
+    .profilewrapper{
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .profilewrapper h2{
+      color: #fff;
+      font-weight: normal;
+      font-size: small;
+    }
+    .profile{
+      width: 50px;
+      height: 50px;
+      border-radius: 30px;
+    }
+    .card{
+      background-color: #131212d2;
+      height: 800px;
+      z-index:-10px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .btn{
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 15px;
+      margin-top:40px;
+      border:1px;
+      border-radius: 5px;
+      background: #f86e4b;
+      }
+    
+    @media screen and (max-width: 600px){
+        footer{
+          flex-direction:column;
+        }
+    }
+
+  </style>
+  <title>Game-page</title>
 </head>
 <body>
-  <div id="banner">
+    <section class= card>
+      <div id="banner">
 
-  </div>
-  <div id="svg-container">
+      </div>
+      <div id="svg-container">
+        <svg height="400px" width="100%" >
+          <rect></rect>
 
-  </div>
-  <footer>
-    <div>
-      Profile
-    </div>
-    <div>
-      Level
-    </div>
-    <div>
-      Score
-    </div>
-    <div>
-      <button class="round pause">
-        <svg>
-          
         </svg>
-      </button>
-    </div>
-  </footer>
+      </div>
+      <footer>
+        <div class="profilewrapper">
+          <img class="profile" id="usrProfile" src="https://via.placeholder.com/100/326d80/ffffff?Text=profile" alt="Newton Barley" title="Newton Barley">
+          <h2>Newton Barley<a href="#" class="profile-view"></a></h2>
+        </div>
+        <div class=" ">
+          <h2>Level</h2>
+        </div>
+        <div class=" ">
+          <h2>Score</h2>
+        </div>
+        <div>
+          <button class="round pause profile">
+            <i class="fa fa-pause"></i>
+          </button>
+        </div>
+      </footer>
+    </section>
 </body>
 </html>

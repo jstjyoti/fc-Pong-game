@@ -9,27 +9,80 @@
                 from {background-color: #ff5353;}
                 to {background-color: #e2a9a9;}
             }
+            @keyframes rotateAnim{
+                0%{
+                    transform: rotate(0deg);
+                }
+                50%{
+                    transform: rotate(360deg);
+                }
+                100%{
+                    transform: rotate(0deg);
+                }
+            }
+            @keyframes rotateAnimRev{
+                0%{
+                    transform: rotate(360deg);
+                }
+                50%{
+                    transform: rotate(0deg);
+                }
+                100%{
+                    transform: rotate(360deg);
+                }
+            }
+            @keyframes bounceAnim{
+                0%{
+                    left: 30%;
+                    top: 0%;
+                }
+                10%{
+                    left: 50%;
+                    top: 100%;
+                }
+                20%{
+                    left: 60%;
+                    top: 0%;
+                }
+                30%{
+                    left: 100%;
+                    top: 40%;
+                }
+                40%{
+                    left: 50%;
+                    top: 60%;
+                }
+                50%{
+                    left: 0%;
+                    top: 40%;
+                }
+                60%{
+                    left: 80%;
+                    top: 100%;
+                }
+                70%{
+                    left: 100%;
+                    top: 10%;
+                }
+                80%{
+                    left: 100%;
+                    top: 10%;
+                }
+                90%{
+                    left: 5%;
+                    top: 50%;
+                }
+                100%{
+                    left:30%;
+                    top: 0%;
+                }
+            }
+
             body{
                 font-family: arial;
                 margin: 0;
-                height:100%;
+                
             }
-
-            .bg{
-                  /* The image used */
-                  
-                background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf_HgElnB2J6FAwJ2I3vPYNIQUSNAMBXbd4__dGoDSrt15_FTT");
-
-                /* Full height */
-                height: 100%;
-                width:100%;
-
-                /* Center and scale the image nicely */
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-            
             main, header{
                 display:flex;
                 flex-direction: column;
@@ -76,19 +129,18 @@
                 display:flex;
                 
             }
-            .animate  { 
+            .animated  { 
                 
                 color:#fff;
-                transform: skewX(-50deg);
                 transition: transform 900ms ease;
                 animation-name: example;
                 animation-duration: 2s;
             }
-            .animate:hover{
+            .animated:hover{
                 font-size: 2rem;
             }
             .red{
-                color:#f86e4b;
+                color:#e0221c;
             }
             .card{
                 background-color: #131212d2;
@@ -154,19 +206,51 @@
                 transform: rotate(-45deg);
                 background-image: linear-gradient(45deg, #ffffff33 0%, #ffffff00 50%, #ffffff00 50%, #ffffff00 100%);
             }
+            .anim-rotate{
+                animation: rotateAnim 3s ease-in-out infinite;
+            }
+            .anim-rotate-rev{
+                animation: rotateAnimRev 3s ease-in-out infinite;
+            }
+            .bat, .ball{
+                position: absolute;
+                background-color: #f86e4b;
+                width: 10px;
+                height: 120px;
+            }
+            .ball{
+                width: 20px;
+                height: 20px;
+                border-radius: 10px;
+                animation: bounceAnim 10s ease infinite;
+            }
+            .ball-rev{
+                animation-direction: reverse;
+            }
+            .bat-1{
+                top: 40%;
+                left: 30%;
+            }
+            .bat-2{
+                top: 40%;
+                right: 30%;
+            }
         </style>
     </head>
     <body>
         <!-- <header>
             <h1>Login using...</h1>
         </header> -->
-        <div class= card>
+        <section class= card>
             <div class="stripcircle"></div>
             <div class="strip strip1"></div>
             <div class="strip strip2"></div>
             <div class="strip strip3"></div>
             <div class="strip strip4"></div>
             <div class="strip5"></div>
+            <div class="bat bat-1 anim-rotate"></div>
+            <div class="bat bat-2 anim-rotate-rev"></div>
+            <div class="ball"></div>
             <main> 
                 <div class="intro center">
                     <i class="fa fa-gamepad big red"></i>
@@ -177,9 +261,9 @@
                 <a class="google-btn center" href="/auth/google">Log-in With Google</a>
             </main>
         
-        <footer>
+             <footer>
                 developed with <i class="fa fa-heart red"></i> by Jyoti
-        </footer>
-        </div>
+            </footer>
+        </section>
     </body>
 </html>
