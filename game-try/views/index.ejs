@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <title>Login</title>
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <style>
-            @keyframes example {
-                from {background-color: #ff5353;}
-                to {background-color: #e2a9a9;}
-            }
+            
             @keyframes rotateAnim{
                 0%{
                     transform: rotate(0deg);
@@ -96,6 +96,7 @@
             }
             main{
                 height:500px;
+                z-index:400px;
             }
             .google-btn{
                 color: #fff;
@@ -128,16 +129,7 @@
                 display:flex;
                 
             }
-            .animated  { 
-                
-                color:#fff;
-                transition: transform 900ms ease;
-                animation-name: example;
-                animation-duration: 2s;
-            }
-            .animated:hover{
-                font-size: 2rem;
-            }
+           
             .red{
                 color:#e0221c;
             }
@@ -155,6 +147,7 @@
             }
             .strip{
                 position: absolute;
+                z-index:-50px;
                 width: 250px;
                 height: 250px;
                 transition: 50ms ease;
@@ -162,6 +155,7 @@
             }
             .stripcircle{
                 position: absolute;
+                z-index: -50px;
                 width: 500px;
                 height: 500px;
                 border-radius: 50%;
@@ -171,30 +165,37 @@
             .strip1{
                 top: 5px;
                 left: 0;
+                z-index:-50px;
                 border-top-left-radius: 10px;
             }
             .strip2{
                 left:0;
                 bottom:0;
+                z-index:-50px;
+
             }
             .strip3{
                 right:0;
                 bottom:0;
+                z-index:-50px;
                 background-image: linear-gradient(45deg, #ffffff11 , #ffffff02);
                 transform: skewY(-200deg);
             }
             .strip4{
                 top: 0px;
                 right: 0;
+                z-index:-50px;
                 background-image: linear-gradient(45deg, #ffffff11 , #ffffff02);
                 transform: skewY(-200deg);
             }
             .strip5{
                 position: absolute;
-                width:800px;
-                height:800px;
+                width:300px;
+                height:300px;
                 left:21%;
                 bottom: 0;
+                z-index:-50px;
+
                 transform: rotate(-45deg);
                 background-image: linear-gradient(45deg, #ffffff33 0%, #ffffff00 50%, #ffffff00 50%, #ffffff00 100%);
             }
@@ -250,7 +251,7 @@
                         RELAX-N-PLAY
                     </h1>
                 </div>
-                <a class="google-btn center" href="/auth/google">Log-in With Google</a>
+                <a class="google-btn center " href="/auth/login">Sign-in</a>
             </main>
         
              <footer>

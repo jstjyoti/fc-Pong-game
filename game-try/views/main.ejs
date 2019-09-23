@@ -49,22 +49,45 @@
       text-align: center;
       overflow: hidden;
     }
-
+    #banner{
+      position:absolute;
+      top:-20px;
+      display:flex;
+      justify-content: space-evenly;
+      width:90%;
+      height:90px;
+      z-index:10px;
+      padding:0 10%;
+      
+    }
+    #banner:hover >.btn{
+      display:block;
+    
+    }
     .btn{
+      display: inline-block;
       color: #fff;
+      /* height:95px; */
       text-decoration: none;
       font-size: 20px;
       font-weight: 600;
       padding: 15px;
       margin-top:40px;
       border:1px;
-      border-radius: 5px;
+      width:80px;
+      border-radius: 15px;
       background: #f86e4b;
-      }
-    
+      display:none;
+    }
+    .btn:hover{
+      background-color: #f35539;
+    }
     @media screen and (max-width: 600px){
         footer{
           flex-direction:column;
+        }
+        .banner{
+          flex-direction: column;
         }
     }
 
@@ -74,7 +97,12 @@
 <body>
     <section class= card>
       <div id="banner">
-
+        <a class="btn continue" href="#" >
+          Continue
+        </a>
+        <a class="btn cancel" href="index.ejs">
+          Cancel
+        </a>
       </div>
       <div id="svg-container">
         <svg height="400px" width="100%" >
@@ -93,7 +121,7 @@
         <div class=" ">
           <h2>Score</h2>
         </div>
-        <div>
+        <div class="hover-ele">
           <button class="round pause profile">
             <i class="fa fa-pause"></i>
           </button>

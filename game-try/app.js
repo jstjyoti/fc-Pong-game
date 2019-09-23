@@ -14,10 +14,10 @@
 
 const express = require('express');
 const cookieSession = require('cookie-session');
-const passport = require('passport');
+//const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
 const profileRoutes = require('./routes/main-routes');
-const passportSetup = require('./config/passport-setup');
+const passport = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 
@@ -34,7 +34,7 @@ app.use(cookieSession({
 
 // initialize passport
 app.use(passport.initialize());
-app.use(passport.session().catch(err => console.log(err)););
+app.use(passport.session());
 
 
 // connect to mongodb
@@ -43,7 +43,14 @@ mongoose.connect(keys.mongodb.dbURI, () => {
 });
 
 // set up routes
-app.use('/auth', authRoutes);
+app.use('/auth/login', passport.authenticate('google', {scope: ['profile']}), (req, res) => {
+    res.end('okk');
+});
+
+app.use('/auth/google/redirect', (req, res) => {
+    res.end('done');
+});
+
 app.use('/index', profileRoutes);
 
 // create home route

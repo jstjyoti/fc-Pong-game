@@ -18,9 +18,10 @@ passport.use(
         // options for google strategy
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret,
-        callbackURL: '/auth/google/redirect'
+        callbackURL: '/auth/google/redirect' 
     }, (accessToken, refreshToken, profile, done) => {
         // check if user already exists in our own db
+        console.log(profile);
         User.findOne({googleId: profile.id}).then((currentUser) => {
             if(currentUser){
                 // already have this user
@@ -42,3 +43,4 @@ passport.use(
         });
     })
 );
+module.exports=passport;
