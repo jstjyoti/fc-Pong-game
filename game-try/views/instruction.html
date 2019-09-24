@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <title>Login</title>
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <style>
-            
+            @keyframes example {
+                from {background-color: #ff5353;}
+                to {background-color: #e2a9a9;}
+            }
             @keyframes rotateAnim{
                 0%{
                     transform: rotate(0deg);
@@ -33,47 +33,47 @@
             }
             @keyframes bounceAnim{
                 0%{
-                    left: 30%;
+                    left: 10%;
                     top: 0%;
                 }
                 10%{
-                    left: 50%;
+                    left: 20%;
                     top: 100%;
                 }
                 20%{
-                    left: 60%;
+                    left: 30%;
                     top: 0%;
                 }
                 30%{
-                    left: 100%;
-                    top: 40%;
+                    left: 40%;
+                    top: 100%;
                 }
                 40%{
                     left: 50%;
-                    top: 60%;
+                    top: 0%;
                 }
                 50%{
-                    left: 0%;
-                    top: 40%;
+                    left: 60%;
+                    top: 100%;
                 }
                 60%{
+                    left: 70%;
+                    top: 0%;
+                }
+                70%{
                     left: 80%;
                     top: 100%;
                 }
-                70%{
-                    left: 100%;
-                    top: 10%;
-                }
                 80%{
-                    left: 100%;
-                    top: 10%;
+                    left: 90%;
+                    top: 0%;
                 }
                 90%{
-                    left: 5%;
-                    top: 50%;
+                    left: 100%;
+                    top: 100%;
                 }
                 100%{
-                    left:30%;
+                    left:0%;
                     top: 0%;
                 }
             }
@@ -94,29 +94,10 @@
                 justify-content: center;
                 align-items: center;
             }
-            a{
-                text-decoration:none;
-            }
             main{
                 height:500px;
-                z-index:400px;
             }
-            .google-btn{
-                color: #fff;
-                text-decoration: none;
-                font-size: 20px;
-                font-weight: 600;
-                padding: 15px;
-                margin-top:40px;
-                border:1px;
-                border-radius: 5px;
-                background: #f86e4b;
-            }
-            .google-btn:hover{
-                color:#fff;
-                text-decoration: none;
-                background-color: #f74a1f;
-            }
+            
             .center{
                 text-align:center;
             }
@@ -137,7 +118,16 @@
                 display:flex;
                 
             }
-           
+            .animated  { 
+                
+                color:#fff;
+                transition: transform 900ms ease;
+                animation-name: example;
+                animation-duration: 2s;
+            }
+            .animated:hover{
+                font-size: 2rem;
+            }
             .red{
                 color:#e0221c;
             }
@@ -155,7 +145,6 @@
             }
             .strip{
                 position: absolute;
-                z-index:-50px;
                 width: 250px;
                 height: 250px;
                 transition: 50ms ease;
@@ -163,7 +152,6 @@
             }
             .stripcircle{
                 position: absolute;
-                z-index: -50px;
                 width: 500px;
                 height: 500px;
                 border-radius: 50%;
@@ -173,37 +161,30 @@
             .strip1{
                 top: 5px;
                 left: 0;
-                z-index:-50px;
                 border-top-left-radius: 10px;
             }
             .strip2{
                 left:0;
                 bottom:0;
-                z-index:-50px;
-
             }
             .strip3{
                 right:0;
                 bottom:0;
-                z-index:-50px;
                 background-image: linear-gradient(45deg, #ffffff11 , #ffffff02);
                 transform: skewY(-200deg);
             }
             .strip4{
                 top: 0px;
                 right: 0;
-                z-index:-50px;
                 background-image: linear-gradient(45deg, #ffffff11 , #ffffff02);
                 transform: skewY(-200deg);
             }
             .strip5{
                 position: absolute;
-                width:300px;
-                height:300px;
+                width:800px;
+                height:800px;
                 left:21%;
                 bottom: 0;
-                z-index:-50px;
-
                 transform: rotate(-45deg);
                 background-image: linear-gradient(45deg, #ffffff33 0%, #ffffff00 50%, #ffffff00 50%, #ffffff00 100%);
             }
@@ -230,11 +211,11 @@
             }
             .bat-1{
                 top: 40%;
-                left: 30%;
+                left: 10%;
             }
             .bat-2{
                 top: 40%;
-                right: 30%;
+                right: 10%;
             }
         </style>
     </head>
@@ -259,7 +240,11 @@
                         RELAX-N-PLAY
                     </h1>
                 </div>
-                <a class="google-btn center " href="/auth/login"> <i class="fa fa-google red"> </i> Sign-in</a>
+                <p>
+                  This is a Paddle-Ball hit Game and one can play it to increase their focus.
+                  There are five level of fun here. On increasing level the speed of ball increases. There's Also This Pause and play available for you.
+                  <h3>Have Fun and Check your Focus</h3>
+                </p>
             </main>
         
              <footer>

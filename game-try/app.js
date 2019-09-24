@@ -1,22 +1,22 @@
 const express = require('express');
-const cookieSession = require('cookie-session');
+//const cookieSession = require('cookie-session');
 //const passport = require('passport');
 // const authRoutes = require('./routes/auth-routes');
-// const profileRoutes = require('./routes/main-routes');
+//const profileRoutes = require('./routes/auth-routes');
 // const passport = require('./config/passport-setup');
 const mongoose = require('mongoose');
-// const keys = require('./config/keys');
+const keys = require('./config/keys');
 
 const app = express();
 
 // set view engine
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 
 // set up session cookies
-app.use(cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [keys.session.cookieKey]
-}));
+// app.use(cookieSession({
+//     maxAge: 24 * 60 * 60 * 1000,
+//     keys: [keys.session.cookieKey]
+// }));
 
 // initialize passport
 // app.use(passport.initialize());
@@ -37,7 +37,7 @@ mongoose.connect(keys.mongodb.dbURI, () => {
 //     res.end(JSON.stringify(req.user));
 // });
 
-app.use('/index', profileRoutes);
+app.use('views/index');
 
 // create home route
 app.get('/', (req, res) => {
