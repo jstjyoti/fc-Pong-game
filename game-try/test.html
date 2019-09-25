@@ -5,14 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    #svg-container{
+      position: relative;
+      top:10px;
+      width:100%;
+      background-image:linear-gradient(to right,#f35539,#f39c39,#f7b264);
+      display: flex;
+      flex-direction: column;
+    }
+    #level-end{
+      position: absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      display:flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width:100%;
+      z-index:10;
+      background-color: rgba(0,0,0,0.1);
+      display: none;
+    }
+  
+    .btn{
+      display: inline-block;
+      color: #fff;
+      /* height:95px; */
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 15px;
+      margin-top:50px;
+      border:1px;
+      width:80px;
+      border-radius: 15px;
+      background: #f86e4b;
+      
+    }
+    .btn:hover{
+      background-color: #f35539;
+    }
+  </style>
   <script src="game.js"></script>
 </head>
 <body>
   <div id="svg-container">
+    <div id="level-end">
+      <h1>Choose to Continue or Cancel</h1>
+      <a class="btn continue" onclick="restart()" >
+        Continue
+      </a>
 
+      <a class="btn cancel" href="index.html">
+        <!-- log out i.e. session removed and taken to log-in page -->
+        Cancel
+      </a>
+    </div>
   </div>
   <script>
     var a=new Game("svg-container",400,800);
+    function restart(){
+        a.init();
+        a.play();
+        document.getElementById('level-end').removeAttribute('style');
+      };
   </script>
 </body>
 </html>
