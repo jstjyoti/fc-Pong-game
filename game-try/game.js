@@ -163,11 +163,11 @@ class Game {
 
   _moveComputersPaddle() {
     this._flags.isPlaying = true;
-    this._flags.reqFrame_paddle = false;
     if (!this._flags.isPause) {
-      if ((this._attr.paddleComputer + this._attr.w) > this._attr.ballX || this._attr.paddleComputer > this._attr.ballX) {
+      if ((this._attr.paddleComputer + this._attr.w) < this._attr.ballX || this._attr.paddleComputer > this._attr.ballX) {
         this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2;
         strike_counter = 0;
+        console.log('called');
         if (this._attr.paddleComputer < 0) {
           this._attr.paddleComputer = 0;
         } else if (this._attr.paddleComputer + this._attr.w > this._attr.width) {
@@ -176,18 +176,14 @@ class Game {
         this._ele.paddle1.setAttribute("x", this._attr.paddleComputer);
 
       }
-
-      // if (strike_counter > 0) {
-      //   this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2 + 200;
-      //   this._ele.paddle1.setAttribute("x", this._attr.paddleComputer);
-      // }
-      // strike_counter++;
-
-
-      if (!this._flags.reqFrame_paddle) {
-        this._flags.reqFrame_paddle = true;
-        requestAnimationFrame(() => this._moveComputersPaddle());
+      if (strike_counter > 2) {
+        strike_counter = 0;
+        this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2 + 10;
+        this._ele.paddle1.setAttribute("x", this._attr.paddleComputer);
       }
+      strike_counter++;
+
+      requestAnimationFrame(() => this._moveComputersPaddle());
 
     }
   }
@@ -199,6 +195,7 @@ class Game {
     } else if (this._attr.paddleUser + this._attr.w > this._attr.width) {
       this._attr.paddleUser = this._attr.width - this._attr.w;
     }
+    
     this._ele.paddle2.setAttribute("x", this._attr.paddleUser);
   }
 

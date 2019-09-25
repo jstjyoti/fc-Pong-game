@@ -188,16 +188,27 @@
     </section>
     <script>
       var a = new Game("svg-container",500,window.innerWidth);
-    
+      a.play();
+      document.addEventListener('keydown', function (e) {
+      if (+e.keyCode == 37) { // left arrow key
+        a.moveUserPaddle(-15);
+      }
+      if (+e.keyCode == 39) { // right arrow  Key
+        a.moveUserPaddle(+15);
+      }
+
+      });
       function restart(){
         a.init();
         a.play();
         document.getElementById('level-end').removeAttribute('style');
       };
       function play() {
+          a.pause();
           document.getElementById('banner').style.display='flex';
       };
       function continuePlay(){
+        a.play();
         document.getElementById('banner').removeAttribute('style');
       };
       
