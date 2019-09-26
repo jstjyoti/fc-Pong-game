@@ -21,14 +21,25 @@ router.get('/main', (req, res) => {
     }
    
 });
+router.get('/main', (req, res) => {
+    if(req.session.user){
+        res.sendFile('main.html', { root: path.join(__dirname, '../', '/views') });
+    }
+    else{
+        res.send("invalid login");
+    }
+   
+});
 // auth logout
 router.get('/logout', (req, res) => {
     // sessions remove
     req.session.destroy(
         (err)=>{
-            res.send("logging out")
+            res.send("logging out");
         }
     )
+    
+
 });
 
 // auth with google+

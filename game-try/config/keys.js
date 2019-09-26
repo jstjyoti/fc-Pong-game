@@ -4,9 +4,9 @@ module.exports = {
       clientSecret: 'cUrMAwmoaRNiXsgExsDVLZjG'
   },
   mongodb: {
-      dbURI: 'mongodb+srv://Jyoti:Jy0t@2019@users-nbybu.mongodb.net/test?retryWrites=true&w=majority'
+      dbURI: 'mongodb+srv://Jyoti:2hMn4dRSebDqCtxr@users-nbybu.mongodb.net/test?retryWrites=true&w=majority'
   }
-  
+  //2hMn4dRSebDqCtxr
 //   session: {
 //       cookieKey: 'Users'
 //   }

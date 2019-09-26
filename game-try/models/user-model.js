@@ -6,7 +6,7 @@ const userSchema = new Schema({
     googleId: String,
     thumbnail: String,
     level: String,
-    Score:String
+    score:String
 });
 
 const User = mongoose.model('user', userSchema);
