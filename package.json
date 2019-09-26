@@ -1,15 +1,15 @@
 {
   "dependencies": {
-    "cookie-session": "^6.11.3",
-    "ejs": "^6.11.3",
-    "express": "^6.11.3",
-    "express-session": "^6.11.3",
-    "mongoose": "^6.11.3",
-    "passport": "^6.11.3",
-    "passport-google-oauth": "^6.11.3",
-    "passport-google-oauth20": "^6.11.3"
+    "cookie-session": "",
+    "ejs": "",
+    "express": "",
+    "express-session": "",
+    "mongoose": "",
+    "passport": "",
+    "passport-google-oauth": "",
+    "passport-google-oauth20": ""
   },
   "engines": {
-    "node":"10.16.3"
+    "node":""
   }
 }
