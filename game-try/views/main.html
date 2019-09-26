@@ -29,8 +29,6 @@
       text-align: center;
     
     }
-
-    
     .profile{
       width: 50px;
       height: 50px;
@@ -48,7 +46,37 @@
       text-align: center;
       overflow: hidden;
     }
+    #start{
+      position: absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width:100%;
+      z-index:10;
+      background-color: rgba(0,0,0,0.1);
+    
+    } 
     #banner{
+      position: absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width:100%;
+      z-index:10;
+      background-color: rgba(0,0,0,0.1);
+      display: none;
+    } 
+    #level-up{
       position: absolute;
       top:0;
       bottom:0;
@@ -121,21 +149,21 @@
         
     }
   </style>
-  <script src="../game.js"></script>
+  <script src="/js/game.js  "></script>
   <title>Game-page</title>
 </head>
 <body>
     <section class="card" id="card">
       
       <div id="svg-container">
-          
-        <!-- <svg id="svg" height="400px" width="100%" >
-          
-          <rect id="upaddle" x='42.5%' y='0' width="120px" height="17px" style="fill:#ff1100;stroke-width:1;stroke:#000000" />
-          <circle id="ball"cx="50%" cy="50%" r="10px" fill="#000" />
-          <rect id="bpaddle" x='42.5%' y="96%" width="120px" height="17px" style="fill:#ff1100;stroke-width:1;stroke:#000000" />
-        
-        </svg> -->
+          <div id="start">
+            <h1>Start the Game</h1>
+            <div>
+              <a class="btn continue" onclick="startPlay()" >
+                Continue
+              </a>
+            </div>
+          </div>
 
         <div id="banner">
           <h1>Choose to Continue or Cancel</h1>
@@ -149,8 +177,22 @@
             </a>
           </div>
         </div>
+        <div id="level-up">
+          <h1>Yayyy! You are going to next level</h1>
+          <div>
+            <a class="btn continue" onclick="continueNext()" >
+              Continue
+            </a>
+
+            <a class="btn cancel" href="index.html" onclick="logout()">
+              <!-- log out i.e. session removed and taken to log-in page -->
+              Cancel
+            </a>
+          </div>
+        </div>
+  
         <div id="level-end">
-          <h1>Choose to Continue or Cancel</h1>
+          <h1>All five levels done Move ahead and play more to boast your score</h1>
           <div>
             <a class="btn continue" onclick="restart()" >
               Continue
@@ -180,36 +222,61 @@
           </button>
         </div>
         <div class="profilewrapper">
-          <button class=" pause profile" id="pause" onclick="play()">
-            <i class="fa fa-pause "></i>
+          <button class=" pause profile" id="pause" onclick="play()" disabled>
+            <i class="fa fa-pause " id="pause-icon"></i>
           </button>
         </div>
       </footer>
     </section>
     <script>
       var a = new Game("svg-container",500,window.innerWidth);
-      a.play();
+      function startPlay(){
+        
+        a.play();
+        document.getElementById('start').style.display='none';
+        document.getElementById('pause').removeAttribute("disabled");
+      }
+      var speed_left=5;
+      var speed_right=5;
       document.addEventListener('keydown', function (e) {
       if (+e.keyCode == 37) { // left arrow key
-        a.moveUserPaddle(-15);
+        speed_right=20;
+        a.moveUserPaddle(-(speed_left++));
       }
       if (+e.keyCode == 39) { // right arrow  Key
-        a.moveUserPaddle(+15);
+        speed_left=20;
+        a.moveUserPaddle(+(speed_right++));
       }
 
       });
       function restart(){
-        a.init();
+        a._reset();
         a.play();
         document.getElementById('level-end').removeAttribute('style');
       };
+      function logout(){
+
+      }
       function play() {
+        document.getElementById("pause-icon").classList.remove("fa-pause");
+        document.getElementById("pause-icon").classList.add("fa-play");
+        
           a.pause();
+
           document.getElementById('banner').style.display='flex';
       };
       function continuePlay(){
+        document.getElementById("pause-icon").classList.remove("fa-play");
+        document.getElementById("pause-icon").classList.add("fa-pause");
+        a._flags.isPlaying=false;
         a.play();
         document.getElementById('banner').removeAttribute('style');
+      };
+      function continueNext(){
+        document.getElementById('level-up').setAttribute("style","display :none");
+        a._flags.isPlaying=false;
+        a.play();
+        
       };
       
     </script>

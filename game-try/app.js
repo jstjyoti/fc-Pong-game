@@ -1,47 +1,44 @@
-const express = require('express');
-//const cookieSession = require('cookie-session');
-//const passport = require('passport');
+const express= require("express");
+const path= require('path');
+const fs= require('fs');
+const session=require("express-session");
+const authRoutes = require('./routes/auth-routes');
 const passport = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
+const app=express();
 
-const app = express();
-
-// set view engine
-//app.set('view engine', 'ejs');
-
-// set up session cookies
-// app.use(cookieSession({
-//     maxAge: 24 * 60 * 60 * 1000,
-//     keys: [keys.session.cookieKey]
-// }));
-
-// initialize passport
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-
-// connect to mongodb
+app.use(passport.initialize());
+app.use(session({
+    secret: 'Js',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+  }))
+// connect to mongoose
 mongoose.connect(keys.mongodb.dbURI, () => {
-    console.log('connected to mongodb');
+    console.log('connected to mongoose');
 });
 
-// set up routes
-// app.use('/auth/login', passport.authenticate('google', {scope: ['profile']}), (req,res)=>{
-//     res.end();
+app.use(express.static('public'));
+
+//set up routes
+app.use('/auth', authRoutes);
+// app.use('/auth/index', passport.authenticate('google', {scope: ['profile']}), (req,res)=>{
+    
 // });
 
 // app.use('/auth/google/redirect', passport.authenticate('google'),(req, res) => {
-//     res.end(JSON.stringify(req.user));
+//     res.redirect(res.sendFile('main.html',{root: path.join(__dirname, '/views')}));
 // });
 
-app.use('views/index');
 
-// create home route
-app.get('/', (req, res) => {
-    res.render('', { user: req.user });
+app.get('/', (req,res)=>{
+    // res.render('index.html');
+    res.sendFile('index.html',{root: path.join(__dirname, '/views')});
 });
 
-app.listen(3000, () => {
-    console.log('app now listening for requests on port 3000');
+
+app.listen(3000,()=>{
+    console.log(' app listening on port 3000');
 });

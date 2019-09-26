@@ -4,9 +4,10 @@ module.exports = {
       clientSecret: 'cUrMAwmoaRNiXsgExsDVLZjG'
   },
   mongodb: {
-      dbURI: 'mongodb://localhost:27018/User'
-  },
-  session: {
-      cookieKey: 'Users'
+      dbURI: 'mongodb+srv://Jyoti:Jy0t@2019@users-nbybu.mongodb.net/test?retryWrites=true&w=majority'
   }
+  
+//   session: {
+//       cookieKey: 'Users'
+//   }
 };
