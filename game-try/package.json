@@ -7,7 +7,7 @@
     "mongoose": "",
     "passport": "",
     "passport-google-oauth": "",
-    "passport-google-oauth20": "",
+    "passport-google-oauth20": ""
     
   },
   "engines": {
