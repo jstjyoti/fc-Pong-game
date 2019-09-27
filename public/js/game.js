@@ -28,6 +28,9 @@ class Game {
     this.init();
     document.getElementById(container).appendChild(this._ele.svg);
   }
+  setScore(score,level){
+    this._
+  }
   //called at the begining or after restart
   init() {
     var str = "fill:#ff1100;stroke-width:1;stroke:#000000";
@@ -154,7 +157,7 @@ class Game {
       this._attr.ballY += this._attr.speed;
       this._attr.ballX += (this._attr.xShift || 0);
       this._ele.ball.setAttribute("cx", this._attr.ballX);
-      this._ele.ball.setAttribute("cy", this._attr.ballY);
+      this._ele.ball.setAttribute("cy", this._attr.ballY-10);
 
       if (!this._flags.reqFrame) {
         this._flags.reqFrame = true;

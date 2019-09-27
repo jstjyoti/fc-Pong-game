@@ -117,7 +117,7 @@
       padding: 15px;
       margin-top:50px;
       border:1px;
-      width:80px;
+      
       border-radius: 15px;
       background: #f86e4b;
       
@@ -211,9 +211,9 @@
           <img class="profile" id="usrProfile" src="https://via.placeholder.com/100/326d80/ffffff?Text=profile" alt="Newton Barley" title="Newton Barley">
         </div>
         <div class = "profilewrapper">
-          <button class=" round profile">
+          <div class=" round profile">
             <i class="fa fa-line-chart big"></i>
-          </button>
+          </div>
         </div>
         <div class="profilewrapper">
           <button class=" profile">
@@ -222,14 +222,14 @@
           </button>
         </div>
         <div class="profilewrapper">
-          <button class=" pause profile" id="pause" onclick="play()" disabled>
+          <div class=" pause profile" id="pause" onclick="play()" disabled>
             <i class="fa fa-pause " id="pause-icon"></i>
-          </button>
+          </div>
         </div>
       </footer>
     </section>
     <script>
-      var a = new Game("svg-container",500,window.innerWidth);
+      var a = new Game("svg-container",500,window.innerWidth-40);
       function startPlay(){
         
         a.play();
@@ -239,11 +239,11 @@
       var speed_left=5;
       var speed_right=5;
       document.addEventListener('keydown', function (e) {
-      if (+e.keyCode == 37) { // left arrow key
+      if (+e.keyCode == 37 && !a._flags.isPause) { // left arrow key
         speed_right=20;
         a.moveUserPaddle(-(speed_left++));
       }
-      if (+e.keyCode == 39) { // right arrow  Key
+      if (+e.keyCode == 39 && !a._flags.isPause) { // right arrow  Key
         speed_left=20;
         a.moveUserPaddle(+(speed_right++));
       }
@@ -280,6 +280,6 @@
       };
       
     </script>
-    <script src="/js/main.html"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>
