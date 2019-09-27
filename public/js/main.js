@@ -4,7 +4,7 @@ var url = 'mongodb+srv://Jyoti:2hMn4dRSebDqCtxr@users-nbybu.mongodb.net/test?ret
 
 MongoClient.connect(url, function(err, db) {
 
-    var cursor = db.collection('Employee').find();
+    var cursor = db.collection('user').find();
 
     cursor.each(function(err, doc) {
 
