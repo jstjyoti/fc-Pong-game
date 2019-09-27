@@ -13,12 +13,7 @@ router.use(session({
 
 // auth login
 router.get('/login', (req, res) => {
-    if(req.session.user){
-        res.sendFile('index.html', { root: path.join(__dirname, '../', '/views') });
-    }
-    else{
-        res.send("invalid login");
-    }
+        res.sendFile('index.html', { root: path.join(__dirname, '../', '/views') })
    
 });
 router.get('/main', (req, res) => {
