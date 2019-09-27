@@ -141,7 +141,7 @@ class Game {
           }
         }
         //if offset equal
-        if (this._attr.ballY >= this._attr.height - this._attr.h) {
+        if (this._attr.ballY+10 >= this._attr.height - this._attr.h) {
           this._attr.score += 1;
           this._islevelUP();
 
