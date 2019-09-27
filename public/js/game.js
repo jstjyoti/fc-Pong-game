@@ -150,7 +150,7 @@ class Game {
         this._attr.speed *= -1;
       }
 
-      if (this._attr.ballX <= 10 || this._attr.ballX >= this._attr.width - 10) {
+      if (this._attr.ballX <= this._attr.h+10 || this._attr.ballX >= this._attr.width - 10) {
         this._attr.xShift *= -1;
       }
 

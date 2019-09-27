@@ -14,7 +14,7 @@ router.use(session({
 // auth login
 router.get('/login', (req, res) => {
         res.sendFile('index.html', { root: path.join(__dirname, '../', '/views') });
-        res.redirect("/auth/login")
+        res.redirect("/auth/login");
    
 });
 router.get('/main', (req, res) => {
