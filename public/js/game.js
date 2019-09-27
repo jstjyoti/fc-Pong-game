@@ -124,7 +124,7 @@ class Game {
       let rect1 = this._ele.paddle1.getBBox();
       let rect2 = this._ele.paddle2.getBBox();
       //if changing position getting struck at the top
-      if (this._attr.ballY<= this._attr.h+10 || this._attr.ballY+10 >= this._attr.height - this._attr.h) {
+      if (this._attr.ballY<= this._attr.h+10 || this._attr.ballY >= this._attr.height - this._attr.h) {
         //console.log(rect1, this._attr.ballX);
         if (((this._attr.ballX <= rect1.x || this._attr.ballX >= rect1.x + rect1.width) && this._attr.ballY <= this._attr.h) || ((this._attr.ballX+10 <= rect2.x || this._attr.ballX >= rect2.x + rect2.width+10) && this._attr.ballY > this._attr.height - this._attr.h)) {
           this._flags.isPause = true;
