@@ -35,7 +35,7 @@ router.get('/logout', (req, res) => {
     // sessions remove
     req.session.destroy(
         (err)=>{
-            res.send("logging out");
+            res.sendFile('logout.html', { root: path.join(__dirname, '../', '/views') });
         }
     )
     

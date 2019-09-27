@@ -34,7 +34,7 @@ class Game {
 
     this._ele.svg.setAttribute("height", this._attr.height);
     this._ele.svg.setAttribute("width", this._attr.width);
-    this._ele.svg.setAttribute("style", "background-image:linear-gradient(to right,#f35539,#f39c39,#f7b264)")
+    this._ele.svg.setAttribute("style", "background-color:#f39c39")
     if (!this._ele.paddle1)
       this._ele.paddle1 = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
     if (!this._ele.paddle2)
