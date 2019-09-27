@@ -215,11 +215,13 @@
         <div class = "profilewrapper">
           <div class=" round profile" id="level">
             <i class="fa fa-line-chart big"></i>
+            <span id="level-txt"></span>
           </div>
         </div>
         <div class="profilewrapper">
           <div class=" profile" id="score">
             <i class="fa fa-paper-plane big "></i>
+            <span id="score-txt"></span>
           </div>
         </div>
         <div class="profilewrapper">
@@ -230,7 +232,7 @@
       </footer>
     </section>
     <script>
-      var a = new Game("svg-container",500,window.innerWidth-40);
+      var a = new Game("svg-container",500,window.innerWidth-40), speed, level, score;
       
       function startPlay(){
         
@@ -295,8 +297,14 @@
       
       function reqUserInfo(){
         sendRequest('GET', '/userinfo', (res) => {
-          document.getElementById('name').innerHTML = res.name;
-          document.getElementById('usrProfile').src = res.dp;
+          //console.log(res);
+          document.getElementById('name').innerHTML = res.username;
+          document.getElementById('usrProfile').src = res.thumbnail;
+          level = res.level;
+          score = res.score;
+          speed = res.speed;
+          document.getElementById('level-txt').innerHTML = level;
+          document.getElementById('score-txt').innerHTML = score;
         });
       }
       
