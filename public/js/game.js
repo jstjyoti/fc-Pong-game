@@ -124,9 +124,9 @@ class Game {
       let rect1 = this._ele.paddle1.getBBox();
       let rect2 = this._ele.paddle2.getBBox();
       //if changing position getting struck at the top
-      if (this._attr.ballY<= this._attr.h+10 || this._attr.ballY >= this._attr.height - this._attr.h) {
+      if (this._attr.ballY<= this._attr.h+10 || this._attr.ballY >= this._attr.height - this._attr.h - 10) {
         //console.log(rect1, this._attr.ballX);
-        if (((this._attr.ballX <= rect1.x || this._attr.ballX >= rect1.x + rect1.width) && this._attr.ballY <= this._attr.h) || ((this._attr.ballX+10 <= rect2.x || this._attr.ballX >= rect2.x + rect2.width+10) && this._attr.ballY > this._attr.height - this._attr.h)) {
+        if (((this._attr.ballX <= rect1.x || this._attr.ballX >= rect1.x + rect1.width) && this._attr.ballY <= this._attr.h + 10) || ((this._attr.ballX+10 <= rect2.x || this._attr.ballX >= rect2.x + rect2.width+10) && this._attr.ballY > this._attr.height - this._attr.h - 10)) {
           this._flags.isPause = true;
           s = this._attr.score;
 
@@ -172,16 +172,17 @@ class Game {
     if (!this._flags.isPause) {
       if( (this._attr.speed<0 )&&((this._attr.paddleComputer + this._attr.w) < this._attr.ballX || this._attr.paddleComputer > this._attr.ballX)) {
         this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2;
+        console.log("a");
         strike_counter = 0;
         if (this._attr.paddleComputer < 0) {
-          this._attr.paddleComputer = 0;
+          this._attr.paddleComputer = 2;
         } else if (this._attr.paddleComputer + this._attr.w >= this._attr.width) {
-          this._attr.paddleComputer = this._attr.width - this._attr.w;
+          this._attr.paddleComputer = this._attr.width - this._attr.w+2;
         }
         this._ele.paddle1.setAttribute("x", this._attr.paddleComputer);
 
       }
-      if (strike_counter > 2) {
+      if (strike_counter === 2) {
         strike_counter = 0;
         this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2 + 10;
         this._ele.paddle1.setAttribute("x", this._attr.paddleComputer);

@@ -40,7 +40,8 @@ passport.use(
                     username: profile.displayName,
                     thumbnail: profile.photos[0].value,
                     level:"1",
-                    score: "0"
+                    score: "0",
+                    speed:"4"
                 }).save().then((newUser) => {
                     console.log('created new user: ', newUser);
                     done(null, newUser);

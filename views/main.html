@@ -124,6 +124,7 @@
     }
     .btn:hover{
       background-color: #f35539;
+      cursor:pointer;
     }
     .color{
       color:#fff;
@@ -211,12 +212,12 @@
           <img class="profile" id="usrProfile" src="https://via.placeholder.com/100/326d80/ffffff?Text=profile" alt="Newton Barley" title="Newton Barley">
         </div>
         <div class = "profilewrapper">
-          <div class=" round profile">
+          <div class=" round profile" id="level">
             <i class="fa fa-line-chart big"></i>
           </div>
         </div>
         <div class="profilewrapper">
-          <div class=" profile">
+          <div class=" profile" id="score">
             <i class="fa fa-paper-plane big "></i>
           </div>
         </div>
@@ -229,6 +230,7 @@
     </section>
     <script>
       var a = new Game("svg-container",500,window.innerWidth-40);
+      
       function startPlay(){
         
         a.play();
@@ -277,8 +279,10 @@
         a.play();
         
       };
+
+      
       
     </script>
-    <script src="/js/main.js"></script>
+    <!-- <script src="/js/main.js"></script> -->
 </body>
 </html>
