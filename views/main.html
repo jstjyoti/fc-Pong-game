@@ -237,7 +237,7 @@
       var name="";
       (function(){
         reqUserInfo();
-        document.getElementById('userProfile').setAttribute("title",name);
+        // document.getElementById('userProfile').setAttribute("title",name);
       })();
       function reqUserInfo(){
         sendRequest('GET', '/userinfo', (res) => {
