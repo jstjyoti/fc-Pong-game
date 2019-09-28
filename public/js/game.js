@@ -80,18 +80,23 @@ class Game {
     }
   }
   _islevelUP() {
-
+    
+    document.getElementById('score-txt').innerHTML = this._attr.score;
     if (this._attr.score > ((this._attr.level * 5) % 50)) {
       this._attr.speed += 0.2;
       this._attr.level += 1;
+      
       if(this._attr.level<5){
         this.pause();
         document.getElementById("level-up").setAttribute("style","display:flex");
+        document.getElementById('level-txt').innerHTML = this._attr.level;
+
       }
       else if (this._attr.level >= 5) {
         this.pause();
         this._attr.level = 1;
         document.getElementById("level-end").setAttribute("style", "display:flex");
+        document.getElementById('level-txt').innerHTML = this._attr.level;
       }
 
     }
@@ -143,6 +148,7 @@ class Game {
         //if offset equal
         if (this._attr.ballY+10 >= this._attr.height - this._attr.h) {
           this._attr.score += 1;
+
           this._islevelUP();
 
         }
