@@ -210,15 +210,18 @@
 
         <div class="profilewrapper">
           <img class="profile" id="usrProfile" src="https://via.placeholder.com/100/326d80/ffffff?Text=profile" alt="Newton Barley" title="Newton Barley">
+          <span id="name"></span>
         </div>
         <div class = "profilewrapper">
           <div class=" round profile" id="level">
             <i class="fa fa-line-chart big"></i>
+            <span id="level-txt"></span>
           </div>
         </div>
         <div class="profilewrapper">
           <div class=" profile" id="score">
             <i class="fa fa-paper-plane big "></i>
+            <span id="score-txt"></span>
           </div>
         </div>
         <div class="profilewrapper">
@@ -229,7 +232,7 @@
       </footer>
     </section>
     <script>
-      var a = new Game("svg-container",500,window.innerWidth-40);
+      var a = new Game("svg-container",500,window.innerWidth-40), speed, level, score;
       
       function startPlay(){
         
@@ -280,7 +283,34 @@
         
       };
 
+      function sendRequest(method, url, cb, data) {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+              cb(JSON.parse(xhr.responseText));
+          }
+        };
+        xhr.open(method, url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(data ? JSON.stringify(data) : undefined);
+      }
       
+      function reqUserInfo(){
+        sendRequest('GET', '/userinfo', (res) => {
+          //console.log(res);
+          document.getElementById('name').innerHTML = res.username;
+          document.getElementById('usrProfile').src = res.thumbnail;
+          level = res.level;
+          score = res.score;
+          speed = res.speed;
+          document.getElementById('level-txt').innerHTML = level;
+          document.getElementById('score-txt').innerHTML = score;
+        });
+      }
+      
+      (function(){
+        reqUserInfo();
+      })();
       
     </script>
     <!-- <script src="/js/main.js"></script> -->
