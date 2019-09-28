@@ -261,6 +261,10 @@
       var speed_left=5;
       var speed_right=5;
       document.addEventListener('keydown', function (e) {
+      if(+e.keyCode==32 ){
+        play();
+      }
+      
       if (+e.keyCode == 37 && !a._flags.isPause) { // left arrow key
         speed_right=20;
         a.moveUserPaddle(-(speed_left++));
