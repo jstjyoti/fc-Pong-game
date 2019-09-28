@@ -208,7 +208,7 @@
       <footer id="footer">
 
         <div class="profilewrapper">
-          <img class="profile" id="usrProfile" src="https://via.placeholder.com/100/326d80/ffffff?Text=profile" alt="Newton Barley" title="Newton Barley">
+          <img class="profile" id="usrProfile" src="https://via.placeholder.com/100/326d80/ffffff?Text=profile" alt="Newton Barley">
           <!-- <span id="name"></span> -->
         </div>
         <div class = "profilewrapper">
@@ -240,7 +240,7 @@
       function reqUserInfo(){
         sendRequest('GET', '/userinfo', (res) => {
           //console.log(res);
-          //document.getElementById('name').innerHTML = res.username;
+          document.getElementById('name').setAttribute("title", res.username);
           document.getElementById('usrProfile').src = res.thumbnail;
           level = res.level;
           score = res.score;
