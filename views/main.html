@@ -209,19 +209,21 @@
 
         <div class="profilewrapper">
           <img class="profile" id="usrProfile" src="https://via.placeholder.com/100/326d80/ffffff?Text=profile" alt="Newton Barley" title="Newton Barley">
-          <span id="name"></span>
+          <!-- <span id="name"></span> -->
         </div>
         <div class = "profilewrapper">
           <div class=" round profile" id="level">
             <i class="fa fa-line-chart big"></i>
-            <span id="level-txt"></span>
+            
           </div>
+          <span id="level-txt"></span>
         </div>
         <div class="profilewrapper">
           <div class=" profile" id="score">
             <i class="fa fa-paper-plane big "></i>
-            <span id="score-txt"></span>
+            
           </div>
+          <span id="score-txt"></span>
         </div>
         <div class="profilewrapper">
           <button class=" pause profile" id="pause" onclick="play()" disabled>
@@ -293,7 +295,7 @@
       function reqUserInfo(){
         sendRequest('GET', '/userinfo', (res) => {
           //console.log(res);
-          document.getElementById('name').innerHTML = res.username;
+          //document.getElementById('name').innerHTML = res.username;
           document.getElementById('usrProfile').src = res.thumbnail;
           level = res.level;
           score = res.score;
