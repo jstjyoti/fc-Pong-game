@@ -234,7 +234,21 @@
     </section>
     <script>
       var a = new Game("svg-container",500,window.innerWidth-40), speed, level, score;
-      
+      (function(){
+        reqUserInfo();
+      })();
+      function reqUserInfo(){
+        sendRequest('GET', '/userinfo', (res) => {
+          //console.log(res);
+          //document.getElementById('name').innerHTML = res.username;
+          document.getElementById('usrProfile').src = res.thumbnail;
+          level = res.level;
+          score = res.score;
+          speed = res.speed;
+          document.getElementById('level-txt').innerHTML = level;
+          document.getElementById('score-txt').innerHTML = score;
+        });
+      }
       function startPlay(){
         
         a.play();
@@ -292,18 +306,7 @@
         xhr.send(data ? JSON.stringify(data) : undefined);
       }
       
-      function reqUserInfo(){
-        sendRequest('GET', '/userinfo', (res) => {
-          //console.log(res);
-          //document.getElementById('name').innerHTML = res.username;
-          document.getElementById('usrProfile').src = res.thumbnail;
-          level = res.level;
-          score = res.score;
-          speed = res.speed;
-          document.getElementById('level-txt').innerHTML = level;
-          document.getElementById('score-txt').innerHTML = score;
-        });
-      }
+
       
       function sendUserInfo(){
         sendRequest('GET', '/userinfo', (res) => {
@@ -317,9 +320,7 @@
           document.getElementById('score-txt').innerHTML = score;
         });
       }
-      (function(){
-        reqUserInfo();
-      })();
+      
       
     </script>
     <!-- <script src="/js/main.js"></script> -->
