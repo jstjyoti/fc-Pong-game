@@ -234,15 +234,17 @@
     </section>
     <script>
       var a = new Game("svg-container",500,window.innerWidth-40), speed, level, score;
+      var name="";
       (function(){
         reqUserInfo();
+        document.getElementById('userProfile').setAttribute("title",name);
       })();
       function reqUserInfo(){
         sendRequest('GET', '/userinfo', (res) => {
           //console.log(res);
           
           document.getElementById('usrProfile').src = res.thumbnail;
-          document.getElementById('userProfile').setAttribute("title", res.username);
+          name=res.username;
           level = res.level;
           score = res.score;
           speed = res.speed;
