@@ -235,6 +235,8 @@
     <script>
       var a = new Game("svg-container",500,window.innerWidth-40), speed, level, score;
       var name="";
+      
+  
       (function(){
         reqUserInfo();
         // document.getElementById('userProfile').setAttribute("title",name);
@@ -250,6 +252,8 @@
           speed = res.speed;
           document.getElementById('level-txt').innerHTML = level;
           document.getElementById('score-txt').innerHTML = score;
+          a._attr.speed=speed;
+
         });
       }
       function startPlay(){
@@ -261,7 +265,7 @@
       var speed_left=5;
       var speed_right=5;
       document.addEventListener('keydown', function (e) {
-      if(+e.keyCode==32 ){
+      if(+e.keyCode==32 && !a._flags.isPause){
         play();
       }
       
@@ -316,7 +320,7 @@
 
       
       function sendUserInfo(){
-        sendRequest('GET', '/userinfo', (res) => {
+        sendRequest('POST','user','auth/main', (res) => {
           //console.log(res);
           document.getElementById('name').innerHTML = res.username;
           document.getElementById('usrProfile').src = res.thumbnail;

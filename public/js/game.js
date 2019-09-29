@@ -82,7 +82,7 @@ class Game {
   _islevelUP() {
     
     document.getElementById('score-txt').innerHTML = this._attr.score;
-    if (this._attr.score > ((this._attr.level * 5) % 50)) {
+    if (this._attr.score >= ((this._attr.level * 10) % 50)) {
       this._attr.speed += 0.2;
       this._attr.level += 1;
       
