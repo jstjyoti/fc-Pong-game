@@ -1,11 +1,12 @@
 class root{
   constructor(conatiner,properties){
-    //create svg element
+    //createElementNS svg element
     //set properties of svg
     //properties of root are height, width, fill, stroke parent conatiner
   }
-  isThereCollision(){
 
+  isThereCollision(){
+    
   }
 
 }
@@ -18,7 +19,9 @@ class paddle extends root{
 
   }
 
+
 }
+
 class ball extends root{
   constructor(){
     super();
@@ -26,8 +29,9 @@ class ball extends root{
   moveBall(){
     if(this.isThereCollision())
     {
-      
+
     }
   }
 
 }
+
