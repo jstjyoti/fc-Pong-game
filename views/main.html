@@ -322,6 +322,7 @@
       function sendUserInfo(){
         sendRequest('POST','user','auth/main', (res) => {
           //console.log(res);
+          // let xhr=new XMLHttpRequest();
           document.getElementById('name').innerHTML = res.username;
           document.getElementById('usrProfile').src = res.thumbnail;
           level = res.level;
