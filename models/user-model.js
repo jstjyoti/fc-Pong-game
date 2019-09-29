@@ -5,9 +5,9 @@ const userSchema = new Schema({
     username: String,
     googleId: String,
     thumbnail: String,
-    level: String,
-    score:String,
-    speed:String
+    level: Number,
+    score: Number,
+    speed: Number
 });
 
 const User = mongoose.model('user', userSchema);
