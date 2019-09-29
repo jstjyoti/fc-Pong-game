@@ -49,16 +49,16 @@ app.get('/userinfo', (req, res) => {
     }
 });
 
-// app.get('/uservaluePost', (req, res) => {
-//     mongoose.model('user').find({}).then((data) => {({
-//         thumbnail: req.body.usrProfile.src ,
-//         username : req.body.name,
-//         level : req.body.level,
-//         score : req.body.score,
-//         speed : req.body.speed,
-//       }).save()
-//       res.send()
-// });
+app.get('/uservaluePost', (req, res) => {
+     mongoose.model('user').find({}).then((data) => {({
+         thumbnail: req.body.usrProfile.src ,
+         username : req.body.name,
+         level : req.body.level,
+         score : req.body.score,
+         speed : req.body.speed,
+       }).save()
+       res.send()
+});
 
 
 app.listen(process.env.PORT || 5000, () => {
