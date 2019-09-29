@@ -28,8 +28,19 @@ class Game {
     this.init();
     document.getElementById(container).appendChild(this._ele.svg);
   }
-  setScore(score,level){
-    this._
+
+  setStats(score, level, speed){
+    this._attr.score = score;
+    this._attr.level = level;
+    this._attr.speed = speed;
+  }
+
+  getStats(){
+    return {
+      score: this._attr.score,
+      level: this._attr.level,
+      speed: this._attr.speed
+    };
   }
   //called at the begining or after restart
   init() {

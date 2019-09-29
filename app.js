@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require('path');
 const fs = require('fs');
-const bp=require("body-parser");
+const bp = require("body-parser");
 const session = require("express-session");
 const authRoutes = require('./routes/auth-routes');
 const passport = require('./config/passport-setup');
@@ -49,15 +49,11 @@ app.get('/userinfo', (req, res) => {
     }
 });
 
-app.get('/uservaluePost', (req, res) => {
-     mongoose.model('user').find({}).then((data) => {({
-         thumbnail: req.body.usrProfile.src ,
-         username : req.body.name,
-         level : req.body.level,
-         score : req.body.score,
-         speed : req.body.speed,
-       }).save()
-       res.send()
+app.post('/update', (req, res) => {
+    console.log(req.body);
+    mongoose.model('user').updateOne({_id: req.session.user._id}, req.body).then(data => {
+        res.end(JSON.stringify(data));
+    });
 });
 
 

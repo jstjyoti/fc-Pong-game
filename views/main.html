@@ -149,7 +149,7 @@
         
     }
   </style>
-  <script src="/js/game.js  "></script>
+  <script src="/js/game.js"></script>
   <title>Game-page</title>
 </head>
 <body>
@@ -172,7 +172,7 @@
               Continue
             </a>
 
-            <a class="btn cancel" href="/auth/logout">
+            <a class="btn cancel" onclick="cancel()" href="#!">
               Cancel
             </a>
           </div>
@@ -209,7 +209,7 @@
 
         <div class="profilewrapper">
           <img class="profile" id="usrProfile" src="https://via.placeholder.com/100/326d80/ffffff?Text=profile" alt="Newton Barley" title="">
-          <!-- <span id="name"></span> -->
+          <span id="name"></span>
         </div>
         <div class = "profilewrapper">
           <div class=" round profile" id="level">
@@ -236,7 +236,13 @@
       var a = new Game("svg-container",500,window.innerWidth-40), speed, level, score;
       var name="";
       
-  
+
+      function cancel(){
+        updateUserInfo(() => {
+          window.location.href = '/auth/logout';
+        });
+      }
+
       (function(){
         reqUserInfo();
         // document.getElementById('userProfile').setAttribute("title",name);
@@ -246,12 +252,14 @@
           //console.log(res);
           
           document.getElementById('usrProfile').src = res.thumbnail;
+          document.getElementById('name').innerHTML = res.username;
           
-          level = res.level;
-          score = res.score;
-          speed = res.speed;
+          level = +res.level || 1;
+          score = +res.score || 0;
+          speed = +res.speed || 4;
           document.getElementById('level-txt').innerHTML = level;
           document.getElementById('score-txt').innerHTML = score;
+          a.setStats(score, level, speed);
           // a._attr.speed=speed;
 
         });
@@ -316,22 +324,13 @@
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(data ? JSON.stringify(data) : undefined);
       }
-      
 
-      
-      function sendUserInfo(){
-        sendRequest('POST','user','auth/main', (res) => {
-          //console.log(res);
-          // let xhr=new XMLHttpRequest();
-          document.getElementById('name').innerHTML = res.username;
-          document.getElementById('usrProfile').src = res.thumbnail;
-          level = res.level;
-          score = res.score;
-          speed = res.speed;
-          document.getElementById('level-txt').innerHTML = level;
-          document.getElementById('score-txt').innerHTML = score;
-        });
+      function updateUserInfo(cb){
+        sendRequest('POST', '/update', (res) => {
+          cb();
+        }, a.getStats());
       }
+
       
       
     </script>
