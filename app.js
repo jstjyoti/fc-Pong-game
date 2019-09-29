@@ -7,7 +7,6 @@ const authRoutes = require('./routes/auth-routes');
 const passport = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
-const User=require('/models/user-model')
 const app = express();
 
 app.use(passport.initialize());
@@ -51,7 +50,7 @@ app.get('/userinfo', (req, res) => {
 });
 
 // app.get('/uservaluePost', (req, res) => {
-//     mongoose.model('user').findOne('').then((data) => {({
+//     mongoose.model('user').find({}).then((data) => {({
 //         thumbnail: req.body.usrProfile.src ,
 //         username : req.body.name,
 //         level : req.body.level,
