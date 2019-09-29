@@ -142,11 +142,9 @@
         footer{
           flex-direction:column;
         }
-        #banner{
-          
+        #banner{ 
           flex-direction: column;
-        }
-        
+        } 
     }
   </style>
   <script src="/js/game.js"></script>
@@ -265,7 +263,7 @@
         });
       }
       function startPlay(){
-        
+
         a.play();
         document.getElementById('start').style.display='none';
         document.getElementById('pause').removeAttribute("disabled");
@@ -278,10 +276,12 @@
       }
       
       if (+e.keyCode == 37 && !a._flags.isPause) { // left arrow key
+
         speed_right=20;
         a.moveUserPaddle(-(speed_left++));
       }
       if (+e.keyCode == 39 && !a._flags.isPause) { // right arrow  Key
+
         speed_left=20;
         a.moveUserPaddle(+(speed_right++));
       }
@@ -316,7 +316,7 @@
       function sendRequest(method, url, cb, data) {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
+          if (this.readyState == 4 && this.status == 200){
               cb(JSON.parse(xhr.responseText));
           }
         };
@@ -331,8 +331,6 @@
         }, a.getStats());
       }
 
-      
-      
     </script>
     <!-- <script src="/js/main.js"></script> -->
 </body>
