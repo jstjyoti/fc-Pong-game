@@ -124,6 +124,8 @@ class Game {
     this._attr.paddleComputer = (0.5 * this._attr.width - (this._attr.w / 2));
 
     this._attr.xShift = 0;
+    document.getElementById('level-txt').innerHTML = level;
+    document.getElementById('score-txt').innerHTML = score;
     this._ele.paddle1.setAttribute("x", (0.5 * this._attr.width - (this._attr.w / 2)));
     this._ele.paddle1.setAttribute("y", 0);
     this._ele.paddle2.setAttribute("x", (0.5 * this._attr.width - (this._attr.w / 2)));
