@@ -3,6 +3,32 @@ class root{
     //createElementNS svg element
     //set properties of svg
     //properties of root are height, width, fill, stroke parent conatiner
+
+    this.container = container;
+    this._ele = {};
+    this._ele.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    this._flags = {};
+    this._attr = {};
+    this._flags.reqFrame = false;
+    this._flags.isPause = false;
+    this._flags.isPlaying = false;
+    this._flags.reqFrame_paddle = false;
+    this._attr.reqFrame_user = false;
+    this._attr.height = height;
+    this._attr.width = width;
+    this._attr.speed = 4;
+    this._attr.level = 1;
+    this._attr.score = 0;
+    this._attr.ballX = 0.5 * this._attr.width;
+    this._attr.ballY = 0.5 * this._attr.height;
+    this._attr.h = this._attr.height * 0.01 < 15 ? 15 : this._attr.height * 0.01;
+    this._attr.w = this._attr.width * 0.1 < 80 ? 80 : this._attr.width * 0.1;
+    this._attr.paddleUser = (0.5 * this._attr.width - (this._attr.w / 2));
+    this._attr.paddleComputer = (0.5 * this._attr.width - (this._attr.w / 2));
+
+    this._attr.xShift = 0;
+    this.init();
+    document.getElementById(container).appendChild(this._ele.svg);
   }
 
   isThereCollision(){
@@ -11,7 +37,7 @@ class root{
 
 }
 class paddle extends root{
-  constructor(){
+  constructor(container){
     super();
   }
   movePaddle(offset)
@@ -23,7 +49,7 @@ class paddle extends root{
 }
 
 class ball extends root{
-  constructor(){
+  constructor(container){
     super();
   }
   moveBall(){
