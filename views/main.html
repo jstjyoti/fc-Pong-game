@@ -251,7 +251,6 @@
       var a = new Game("svg-container",window.innerHeight-100,window.innerWidth-10), speed, level, score;
       var name="";
       
-
       function cancel(){
         updateUserInfo(() => {
           window.location.href = '/auth/logout';
@@ -264,7 +263,6 @@
       })();
       function reqUserInfo(){
         sendRequest('GET', '/userinfo', (res) => {
-          //console.log(res);
           
           document.getElementById('usrProfile').src = res.thumbnail;
           document.getElementById('name').innerHTML = res.username;
@@ -275,7 +273,6 @@
           document.getElementById('level-txt').innerHTML = level;
           document.getElementById('score-txt').innerHTML = score;
           a.setStats(score, level, speed);
-          // a._attr.speed=speed;
 
         });
       }

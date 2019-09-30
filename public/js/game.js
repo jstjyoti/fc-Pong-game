@@ -189,9 +189,8 @@ class Game {
   _moveComputersPaddle() {
     this._flags.isPlaying = true;
     if (!this._flags.isPause) {
-      if( (this._attr.speed<0 )&&((this._attr.paddleComputer + this._attr.w) < this._attr.ballX || this._attr.paddleComputer > this._attr.ballX)) {
+      if( ((this._attr.speed<0)&&this._attr.ballY< this._attr.height*0.3 )&&((this._attr.paddleComputer + this._attr.w) < this._attr.ballX || this._attr.paddleComputer > this._attr.ballX)) {
         this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2;
-        console.log("a");
         strike_counter = 0;
         if (this._attr.paddleComputer < 0) {
           this._attr.paddleComputer = 2;
