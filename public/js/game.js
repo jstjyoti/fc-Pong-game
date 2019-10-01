@@ -118,7 +118,7 @@ class Game {
     this._flags.isPlaying = false;
     this._flags.reqFrame = false;
     this._attr.speed = this._attr.level==1 ? 4 : (4+(this._attr.level-1)*0.3);
-    this._attr.score = (this._attr.level - 1) * 10;
+    this._attr.score =this._attr.score%10===0 ? this._attr.score - 10: this._attr.score-(this._attr.score%10);
     this._attr.level = this._attr.level==1 ? 1: this._attr.level-1;
 
     //this._attr.prevscore=this._attr.score;
