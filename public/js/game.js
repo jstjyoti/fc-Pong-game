@@ -118,8 +118,9 @@ class Game {
     this._flags.isPlaying = false;
     this._flags.reqFrame = false;
     this._attr.speed = this._attr.level==1 ? 4 : (4+(this._attr.level-1)*0.3);
+    this._attr.score = (this._attr.level - 1) * 10;
     this._attr.level = this._attr.level==1 ? 1: this._attr.level-1;
-    this._attr.score = this._attr.score - (this._attr.score%10);
+
     //this._attr.prevscore=this._attr.score;
     
     this._attr.ballX = 0.5 * this._attr.width;
@@ -151,9 +152,7 @@ class Game {
         if (((this._attr.ballX <= rect1.x || this._attr.ballX >= rect1.x + rect1.width) && this._attr.ballY <= this._attr.h + 10) || ((this._attr.ballX+10 <= rect2.x || this._attr.ballX >= rect2.x + rect2.width+10) && this._attr.ballY > this._attr.height - this._attr.h - 10)) {
           this._flags.isPause = true;
           s = this._attr.score;
-
           document.getElementById('banner').style.display = 'flex';
-
           this._reset();
         } else {
           if (0.5 * this._attr.height < this._attr.ballY) {
