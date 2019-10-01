@@ -17,6 +17,7 @@ class Game {
     this._attr.speed = 4;
     this._attr.level = 1;
     this._attr.score = 0;
+    
     this._attr.ballX = 0.5 * this._attr.width;
     this._attr.ballY = 0.5 * this._attr.height;
     this._attr.h = this._attr.height * 0.01 < 15 ? 15 : this._attr.height * 0.01;
@@ -45,7 +46,8 @@ class Game {
   //called at the begining or after restart
   init() {
     var str = "fill:#ff1100;stroke-width:1;stroke:#000000";
-
+    //console.log(this._attr.prevscore);
+    
     this._ele.svg.setAttribute("height", this._attr.height);
     this._ele.svg.setAttribute("width", this._attr.width);
     this._ele.svg.setAttribute("style", "background-color:#f39c39")
@@ -84,7 +86,7 @@ class Game {
 
     this._flags.isPause = false;
     if (!this._flags.isPlaying) {
-      this._flags.isPlaying = true;
+      this._flags.isPlaying = false;
       this._moveball();
       this._moveComputersPaddle()
 
@@ -115,9 +117,11 @@ class Game {
   _reset() {
     this._flags.isPlaying = false;
     this._flags.reqFrame = false;
-    this._attr.speed = 4;
-    this._attr.score = 0;
-    this._attr.level = 1;
+    this._attr.speed = this._attr.level==1 ? 4 : (4+(this._attr.level-1)*0.3);
+    this._attr.level = this._attr.level==1 ? 1: this._attr.level-1;
+    this._attr.score = this._attr.score - (this._attr.score%10);
+    //this._attr.prevscore=this._attr.score;
+    
     this._attr.ballX = 0.5 * this._attr.width;
     this._attr.ballY = 0.5 * this._attr.height;
     this._attr.paddleUser = (0.5 * this._attr.width - (this._attr.w / 2));
@@ -174,7 +178,7 @@ class Game {
       }
 
       this._attr.ballY += this._attr.speed;
-      this._attr.ballX += (this._attr.xShift || 10);
+      this._attr.ballX += (this._attr.xShift || 0);
       this._ele.ball.setAttribute("cx", this._attr.ballX);
       this._ele.ball.setAttribute("cy", this._attr.ballY);
 
@@ -189,30 +193,31 @@ class Game {
   _moveComputersPaddle() {
     
     this._flags.isPlaying = true;
-    this._flags.reqPaddle=false;
+    //this._flags.reqPaddle=false;
     if (!this._flags.isPause) {
       
-      if( (this._attr.speed<0)&&((this._attr.paddleComputer + this._attr.w) < this._attr.ballX || this._attr.paddleComputer > this._attr.ballX)) {
-        this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2;
-        strike_counter = 0;
+      if( (this._attr.speed<0)&&(((this._attr.paddleComputer + this._attr.w) < this._attr.ballX )|| (this._attr.paddleComputer > this._attr.ballX))){
+          this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2;
+          strike_counter = 0;
         if (this._attr.paddleComputer < 0) {
-          this._attr.paddleComputer = 2;
+          this._attr.paddleComputer = 10;
         } 
         else if (this._attr.paddleComputer + this._attr.w >= this._attr.width) {
-          this._attr.paddleComputer = this._attr.width - this._attr.w+2;
+          this._attr.paddleComputer = this._attr.width - this._attr.w+10;
         }
+        //console.log(this._attr.ballY);
         this._ele.paddle1.setAttribute("x", this._attr.paddleComputer);
       }
-      if (strike_counter >= 2) {
+      //}
+      if ((this._attr.speed<0)&& (strike_counter >= 2)){
         strike_counter = 0;
         this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2 + 10;
         this._ele.paddle1.setAttribute("x", this._attr.paddleComputer);
+         //console.log(this._attr.ballY);
       }
       strike_counter++;
-      if(!this._flags.reqPaddle){
-        this._flags.reqPaddle=true;
         requestAnimationFrame(() => this._moveComputersPaddle());
-      }
+        // console.log(this._attr.ballY);
 
     }
   }

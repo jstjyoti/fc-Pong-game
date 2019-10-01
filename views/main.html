@@ -199,7 +199,7 @@
               Continue
             </a>
 
-            <a class="btn cancel" href="/auth/logout" onclick="logout()">
+            <a class="btn cancel" href="#" onclick="cancel()">
               <!-- log out i.e. session removed and taken to log-in page -->
               Cancel
             </a>
@@ -213,7 +213,7 @@
               Continue
             </a>
 
-            <a class="btn cancel" href="/auth/logout">
+            <a class="btn cancel" onclick="cancel()" href="#">
               <!-- log out i.e. session removed and taken to log-in page -->
               Cancel
             </a>
@@ -331,8 +331,7 @@
         a.play();
         document.getElementById('level-end').removeAttribute('style');
       };
-      function logout(){
-      }
+      
       function play() {
         document.getElementById("pause-icon").classList.remove("fa-pause");
         document.getElementById("pause-icon").classList.add("fa-play");

@@ -1,3 +1,5 @@
+import { inherits } from "util";
+
 class Root{
   constructor(conatiner,properties){
     //createElementNS svg element
@@ -86,12 +88,11 @@ class Root{
     if (!this._flags.isPlaying) {
       this._flags.isPlaying = true;
       this._moveball();
-      this._moveComputersPaddle()
-
+      this._moveComputersPaddle();
     }
   }
-  _islevelUP() {
-    
+  _islevelUP() 
+  { 
     document.getElementById('score-txt').innerHTML = this._attr.score;
     if (this._attr.score >= ((this._attr.level * 10) % 50)) {
 
@@ -109,7 +110,6 @@ class Root{
         document.getElementById("level-end").setAttribute("style", "display:flex");
         document.getElementById('level-txt').innerHTML = this._attr.level;
       }
-
     }
   }
   _reset() {
@@ -183,14 +183,13 @@ class Paddle extends Root{
       this._attr.paddleUser = this._attr.width - this._attr.w;
     }
     this._ele.paddle2.setAttribute("x", this._attr.paddleUser);
-  
   }
 }
 
 class Ball extends Root{
   constructor(container){
     super();
-    ball=createElementNS("http://www.w3.org/1999/xhtml",circle);
+    ball=createElementNS("http://www.w3.org/2000/svg",circle);
 
     this._ele.svg.appendChild(ball);
   }
@@ -219,7 +218,12 @@ class Ball extends Root{
   }
 
 }
-
-class AutomoveBall{
-
+class AutomoveBall extends Paddle{
+  automatePaddle(){
+    //calculation of offset
+    //positive for right movement and negative for left movement
+    //
+    this.movePaddle(offset);
+  }
 }
+
