@@ -118,7 +118,7 @@ class Game {
     this._flags.isPlaying = false;
     this._flags.reqFrame = false;
     this._attr.speed = this._attr.level==1 ? 4 : (4+(this._attr.level-1)*0.3);
-    this._attr.score =this._attr.score%10===0 ? this._attr.score - 10: this._attr.score-(this._attr.score%10);
+    this._attr.score = this._attr.score%10===0&&this._attr.level!==1 ? this._attr.score - 10: this._attr.score-(this._attr.score%10);
     this._attr.level = this._attr.level==1 ? 1: this._attr.level-1;
 
     //this._attr.prevscore=this._attr.score;
@@ -196,7 +196,9 @@ class Game {
     if (!this._flags.isPause) {
       
       if( (this._attr.speed<0)&&(((this._attr.paddleComputer + this._attr.w) < this._attr.ballX )|| (this._attr.paddleComputer > this._attr.ballX))){
-          this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2;
+        let targetShift = (this._attr.ballX - this._attr.w / 2) - this._attr.paddleComputer;
+        //console.log(targetShift);
+        this._attr.paddleComputer += targetShift<0 ? -Math.min(Math.abs(targetShift), 10) : Math.min(Math.abs(targetShift), 10);
           strike_counter = 0;
         if (this._attr.paddleComputer < 0) {
           this._attr.paddleComputer = 10;
@@ -210,7 +212,10 @@ class Game {
       //}
       if ((this._attr.speed<0)&& (strike_counter >= 2)){
         strike_counter = 0;
-        this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2 + 10;
+       // this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2 + 10;
+        let targetShift =  (this._attr.ballX - this._attr.w / 2) - this._attr.paddleComputer;
+        //console.log(targetShift);
+        this._attr.paddleComputer += targetShift<0 ? 0-Math.min(Math.abs(targetShift), 10) : Math.min(Math.abs(targetShift), 10);
         this._ele.paddle1.setAttribute("x", this._attr.paddleComputer);
          //console.log(this._attr.ballY);
       }

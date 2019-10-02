@@ -1,4 +1,3 @@
-import { inherits } from "util";
 
 class Root{
   constructor(conatiner,properties){
@@ -77,7 +76,6 @@ class Root{
     this._ele.svg.appendChild(this._ele.paddle1);
     this._ele.svg.appendChild(this._ele.paddle2);
     this._flags.isPlaying = false;
-
   }
   pause() {
     this._flags.isPause = true;
@@ -171,7 +169,6 @@ class Root{
 }
 class Paddle extends Root{
   constructor(container){
-
     super();
   }
   movePaddle(shift)
@@ -222,8 +219,11 @@ class AutomoveBall extends Paddle{
   automatePaddle(){
     //calculation of offset
     //positive for right movement and negative for left movement
-    //
+    //done in game.js in move Computer paddle
     this.movePaddle(offset);
   }
 }
 
+
+
+//
