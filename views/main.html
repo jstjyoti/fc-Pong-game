@@ -310,10 +310,14 @@
       if(e.clientY <= rect.y + rect.width && e.clientX < rect.x + rect.width && e.clientX > rect.x && !a._flags.isPause){
         if(e.clientX < rect.x + rect.width / 2){
           //console.log('left');
-          a.moveUserPaddle(-(speed_left++));
+          speed_left+=10;
+          speed_right=20;
+          a.moveUserPaddle(-(speed_left));
         }else{
           //console.log('right');
-          a.moveUserPaddle(+(speed_right++));
+          speed_left=20;
+          speed_right+=10;
+          a.moveUserPaddle(speed_right);
         }
       }
       });
