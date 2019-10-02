@@ -77,20 +77,16 @@
                     top: 0%;
                 }
             }
-            html{
-                margin: 0;
-                /* max-height:100vh; */
-            }
 
             body{
                 font-family: arial;
                 margin: 0;
-                /* max-height:100vh; */
+                height:100vh;
             }
             main, header{
                 display:flex;
                 flex-direction: column;
-                max-height:100vh;
+                max-height:960px;
                 max-width: 960px;
                 margin: 30px auto;
                 padding: 0 10px;
@@ -102,7 +98,7 @@
                 text-decoration:none;
             }
             main{
-                
+                height:80vh;
                 z-index:400px;
             }
             .google-btn{
@@ -148,7 +144,7 @@
             }
             .card{
                 background-color: #131212d2;
-                max-height: 100vh;
+                height: 100vh;
                 color: #fff;
                 display: flex;
                 justify-content: center;
@@ -247,7 +243,7 @@
         <!-- <header>
             <h1>Login using...</h1>
         </header> -->
-        <section class= "card">
+        <section class= card>
             <div class="stripcircle"></div>
             <div class="strip strip1"></div>
             <div class="strip strip2"></div>
