@@ -193,10 +193,7 @@ class Ball extends Root{
   moveBall(){
     if(super.isThereCollision())
     {
-
       super._attr.speed *= -1;
-    
-
       if (super._attr.ballX <= 10 ||super._attr.ballX >=super._attr.width - 10) {
         super._attr.xShift *= -1;
      }
@@ -215,7 +212,6 @@ class Ball extends Root{
 }
 class AutomoveBall extends Paddle{
   automatePaddle(){
-        
     
     //this._flags.reqPaddle=false;
     if (!super._flags.isPause) {
