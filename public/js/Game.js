@@ -1,10 +1,8 @@
-
 class Root{
   constructor(conatiner,properties){
     //createElementNS svg element
     //set properties of svg
     //properties of root are height, width, fill, stroke parent conatiner
-
   this.container = container;
   this._ele = {};
   this._ele.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -30,6 +28,10 @@ class Root{
   this._attr.xShift = 0;
   this.init();
     document.getElementById(container).appendChild(this._ele.svg);
+  this._ele.paddle1=new Paddle();
+  this._ele.paddle2=new Paddle();
+  this._ele.ball=new Ball();
+
   }
 
   setStats(score, level, speed){
