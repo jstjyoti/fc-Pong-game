@@ -1,4 +1,4 @@
-import { threadId } from "worker_threads";
+//import { threadId } from "worker_threads";
 
 var strike_counter = 0;
 class Game {
