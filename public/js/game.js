@@ -214,7 +214,7 @@ class Game {
        // this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2 + 10;
         let targetShift =  (this._attr.ballX - this._attr.w / 2) - this._attr.paddleComputer;
         //console.log(targetShift);
-        this._attr.paddleComputer += targetShift<0 ? 0-Math.min(Math.abs(targetShift), 10) : Math.min(Math.abs(targetShift), 10);
+        this._attr.paddleComputer += targetShift<0 ? 0-Math.min(Math.abs(targetShift)+10, 20) : Math.min(Math.abs(targetShift)+10, 20);
         this._ele.paddle1.setAttribute("x", this._attr.paddleComputer);
          //console.log(this._attr.ballY);
       }
