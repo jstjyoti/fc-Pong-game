@@ -1,3 +1,5 @@
+import { threadId } from "worker_threads";
+
 var strike_counter = 0;
 class Game {
   constructor(container, height, width) {
@@ -214,7 +216,10 @@ class Game {
        // this._attr.paddleComputer = this._attr.ballX - this._attr.w / 2 + 10;
         let targetShift =  (this._attr.ballX - this._attr.w / 2) - this._attr.paddleComputer;
         //console.log(targetShift);
-        this._attr.paddleComputer += targetShift<0 ? 0-Math.min(Math.abs(targetShift)+10, 20) : Math.min(Math.abs(targetShift)+10, 20);
+        
+        this._attr.paddleComputer += targetShift<0 ? 0-Math.min(Math.abs(targetShift), 10) : Math.min(Math.abs(targetShift), 10);
+        if(this._attr.ballX-this._attr.paddleComputer!=0)
+          this._attr.paddleComputer=this._attr.ballX;
         this._ele.paddle1.setAttribute("x", this._attr.paddleComputer);
          //console.log(this._attr.ballY);
       }
