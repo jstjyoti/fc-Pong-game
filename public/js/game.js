@@ -149,19 +149,12 @@ class Game {
       //if changing position getting struck at the top
       if (this._attr.ballY<= this._attr.h+10 || this._attr.ballY >= this._attr.height - this._attr.h - 10) {
         //console.log(rect1, this._attr.ballX);
-        if (((this._attr.ballX <= rect1.x || this._attr.ballX >= rect1.x + rect1.width) && this._attr.ballY <= this._attr.h + 10) ) {
+        if (((this._attr.ballX <= rect1.x || this._attr.ballX >= rect1.x + rect1.width) && this._attr.ballY <= this._attr.h + 10) || ((this._attr.ballX+10 <= rect2.x || this._attr.ballX >= rect2.x + rect2.width+10) && this._attr.ballY > this._attr.height - this._attr.h - 10)) {
           this._flags.isPause = true;
           s = this._attr.score;
           document.getElementById('banner').style.display = 'flex';
           this._reset();
-        } 
-        else if(((this._attr.ballX+10 <= rect2.x || this._attr.ballX >= rect2.x + rect2.width+10) && this._attr.ballY > this._attr.height - this._attr.h - 10))
-        {
-          alert("Computer lost you got level up");
-          this._attr.score +=10;
-          this._reset();
-        }
-        else {
+        } else {
           if (0.5 * this._attr.height < this._attr.ballY) {
             this._attr.xShift += (this._attr.ballX - rect2.x - rect2.width / 2) * (0.05);
           } else {
@@ -204,7 +197,7 @@ class Game {
       if( (this._attr.speed<0)&&(((this._attr.paddleComputer + this._attr.w) < this._attr.ballX )|| (this._attr.paddleComputer > this._attr.ballX))){
         let targetShift = (this._attr.ballX - this._attr.w / 2) - this._attr.paddleComputer;
         //console.log(targetShift);
-        this._attr.paddleComputer += targetShift<0 ? -Math.min(Math.abs(targetShift), 10) : Math.min(Math.abs(targetShift), 10);
+        this._attr.paddleComputer += targetShift<0 ? -Math.min(Math.abs(targetShift), 5) : Math.min(Math.abs(targetShift), 5);
           strike_counter = 0;
         if (this._attr.paddleComputer < 0) {
           this._attr.paddleComputer = 10;
