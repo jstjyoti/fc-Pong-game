@@ -293,12 +293,12 @@
         }
         
       }
-      if (+e.keyCode == 37 && !a._flags.isPause) { // left arrow key
+      if (+e.keyCode == 37 && !a._flags.isPause && started) { // left arrow key
 
         speed_right=20;
         a.moveUserPaddle(-(speed_left++));
       }
-      if (+e.keyCode == 39 && !a._flags.isPause) { // right arrow  Key
+      if (+e.keyCode == 39 && !a._flags.isPause && started) { // right arrow  Key
 
         speed_left=20;
         a.moveUserPaddle(+(speed_right++));

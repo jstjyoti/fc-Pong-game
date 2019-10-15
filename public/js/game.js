@@ -197,7 +197,7 @@ class Game {
       if( (this._attr.speed<0)&&(((this._attr.paddleComputer + this._attr.w) < this._attr.ballX )|| (this._attr.paddleComputer > this._attr.ballX))){
         let targetShift = (this._attr.ballX - this._attr.w / 2) - this._attr.paddleComputer;
         //console.log(targetShift);
-        this._attr.paddleComputer += targetShift<0 ? -Math.min(Math.abs(targetShift), 15) : Math.min(Math.abs(targetShift), 15);
+        this._attr.paddleComputer += targetShift<0 ? -Math.min(Math.abs(targetShift), 20) : Math.min(Math.abs(targetShift), 20);
           strike_counter = 0;
         if (this._attr.paddleComputer < 0) {
           this._attr.paddleComputer = 10;
